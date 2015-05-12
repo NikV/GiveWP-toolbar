@@ -4,7 +4,7 @@
  */
 
 class GiveWP_Admin_Bar {
-	//The Exchange Toolbar Instance
+	//The GiveWP Toolbar Instance
 	public static function init() {
 		static $instance = false;
 		if ( ! $instance ) {
@@ -83,3 +83,14 @@ function load_GiveWP_Admin_Bar() {
 	}
 }
 add_action('plugins_loaded', 'load_GiveWP_Admin_Bar');
+
+
+if ( !empty( $related_ids ) ) {
+	if ( 1 < count( $related_ids ) ) {
+		update_metadata( $object_type, $id, '_pods_' . $field[ 'name' ], $related_ids );
+	}
+
+	foreach ( $related_ids as $related_id ) {
+		add_metadata( $object_type, $id, $field[ 'name' ], $related_id );
+	}
+}
