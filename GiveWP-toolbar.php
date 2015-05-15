@@ -15,6 +15,7 @@ class GiveWP_Admin_Bar {
 	public function __construct() {
 		add_action('admin_bar_menu', array( $this, 'admin_bar_nodes'), 999);
 	}
+
 	/**
 	 * The function that creates the menus (nodes) for the admin bar
 	 *
@@ -57,6 +58,15 @@ class GiveWP_Admin_Bar {
 					'href'   => admin_url( 'edit.php?post_type=give_forms&page=give-payment-history' ),
 				)
 			);
+
+			$wp_admin_bar->add_node( array(
+					'id'     => 'givewp_reports',
+					'title'  => 'Reports',
+					'parent' => 'givewp_toolbar',
+					'href'   => admin_url( 'edit.php?post_type=give_forms&page=give-reports' ),
+				)
+			);
+
 			$wp_admin_bar->add_node( array(
 					'id'     => 'givewp_settings',
 					'title'  => 'Settings',
