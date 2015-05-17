@@ -23,6 +23,8 @@ class GiveWP_Admin_Bar {
 	 */
 	public function admin_bar_nodes( $wp_admin_bar ) {
 		if ( ! is_admin() ) {
+			$count_posts = wp_count_posts('give_payment');
+
 			$wp_admin_bar->add_node( array(
 					'id'    => 'givewp_toolbar',
 					'title' => 'Give',
@@ -53,7 +55,7 @@ class GiveWP_Admin_Bar {
 
 			$wp_admin_bar->add_node( array(
 					'id'     => 'givewp_transactions',
-					'title'  => 'Transactions',
+					'title'  => 'Transactions (' . $count_posts->publish . ')',
 					'parent' => 'givewp_toolbar',
 					'href'   => admin_url( 'edit.php?post_type=give_forms&page=give-payment-history' ),
 				)
@@ -93,14 +95,3 @@ function load_GiveWP_Admin_Bar() {
 	}
 }
 add_action('plugins_loaded', 'load_GiveWP_Admin_Bar');
-
-
-if ( !empty( $related_ids ) ) {
-	if ( 1 < count( $related_ids ) ) {
-		update_metadata( $object_type, $id, '_pods_' . $field[ 'name' ], $related_ids );
-	}
-
-	foreach ( $related_ids as $related_id ) {
-		add_metadata( $object_type, $id, $field[ 'name' ], $related_id );
-	}
-}
