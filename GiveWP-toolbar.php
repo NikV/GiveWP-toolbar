@@ -1,6 +1,12 @@
 <?php
 /**
  * Plugin Name: GiveWP Toolbar
+ * Description: A simple toolbar plugin for the Give Plugin for WordPress
+ * Author: Nikhil Vimal
+ * Author URI: http://nik.techvoltz.com
+ * Version: 1.0
+ * Plugin URI:
+ * License: GNU GPLv2+
  */
 
 class GiveWP_Admin_Bar {
