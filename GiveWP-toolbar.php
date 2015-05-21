@@ -18,6 +18,7 @@ class GiveWP_Admin_Bar {
 		}
 		return $instance;
 	}
+
 	public function __construct() {
 		add_action('admin_bar_menu', array( $this, 'admin_bar_nodes'), 999);
 	}
